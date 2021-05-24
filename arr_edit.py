@@ -2,7 +2,7 @@ import os
 # TODO
 # to refine and add support for two concequent arrays of the same subject. eg Computational_models.js
 dir_path = r'<questions/answers direcoty path>'
-file_path = r'<js array file full path>'
+file_path = r"C:\Users\alws3\Google Drive\Alon\Projects\Publish\Exams_Preperation\images\jsarr.js"
 
 directory = os.fsencode(dir_path)
 arr_name = 'Computational_models=[\n'
@@ -11,12 +11,17 @@ end_str = '",\n'
 images = ''
 
 
-def writer(array, imagesList):
-    str_to_write = array + imagesList + ']'
+def writer_arr1(array_name, imagesList):
+    str_to_write = array_name + imagesList + '],'
     f = open(file_path, 'w')
     f.write(str_to_write)
     f.close
-
+    
+def writer_arr2(array_name, imagesList):
+    str_to_write = array_name + imagesList + ']'
+    f = open(file_path, 'w')
+    f.write(str_to_write)
+    f.close
 
 file_list = os.listdir(directory)
 for file in file_list:
@@ -29,4 +34,4 @@ for file in file_list:
     else:
         continue
 
-writer(arr_name, images)
+writer_arr1(arr_name, images)

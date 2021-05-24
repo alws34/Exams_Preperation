@@ -14,7 +14,6 @@ Algorithms_Questions=[
 "3-2.png",
 "3-3.png",
 "3-4.png",
-"3-5.png",
 "4-1.png",
 "4-2.png",
 "4-3.png",

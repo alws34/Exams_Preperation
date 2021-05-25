@@ -12,17 +12,17 @@
 
   function selectsubject() {
       subject = $("#subject").val()
+
       if (subject != "-1") {
           switch (subject) {
               case "Computational_models":
-                  questionsArr = Computational_models_Questions;
+                  questionsArr = Computational_models;
                   break;
               case "Algoritms":
-                  questionsArr = Algoritms_Questions;
+                  questionsArr = Algoritms;
                   break;
           }
-          let arrname = subject + "_Questions"
-          questionsArr = Computational_models_Questions;
+          questionsArr = subject;
       }
   }
 

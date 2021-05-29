@@ -18,15 +18,14 @@
               case "Computational_models":
                   questionsArr = Computational_models;
                   break;
-              case "Algoritms":
-                  questionsArr = Algoritms;
+              case "Algorithms":
+                  questionsArr = Algorithms_arr;
                   break;
           }
-          questionsArr = subject;
       }
   }
 
-  function getRandomArbitrary(min, max) {
+  function GetIndex(min, max) {
       return Math.floor(Math.random() * (max - min) + min);
   }
 
@@ -42,14 +41,14 @@
 
       do {
           flag = true;
-          random = getRandomArbitrary(0, questionsArr.length - 1);
+          random = GetIndex(0, questionsArr.length - 1);
           for (var i = 0; i < arr.length; i++) {
               if (random == arr[i])
                   flag = false;
           }
       } while (flag == false);
 
-      str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + "'>";
+      str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>";
       document.getElementById('ph').innerHTML = str;
       arr.push(random);
       count++;
@@ -57,7 +56,7 @@
   }
 
   function getAnswer() {
-      str = "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>";
+      str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>";
       document.getElementById('ph2').innerHTML = str;
       document.getElementById('btnGetAnswer').style.visibility = "hidden";
   }

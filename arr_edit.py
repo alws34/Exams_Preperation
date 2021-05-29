@@ -4,8 +4,8 @@
 import os
 
 # full path to one of the images folder # leave the 'r' where it is.
-dir_path = r"D:\Google Drive\Alon\Projects\Publish\Exams_Preperation\images\Algorithms\answers"
-file_path = r"D:\Google Drive\Alon\Projects\Publish\Exams_Preperation\JS_util\data_sets\Algoritms.js"  # full path to .js file to edit
+dir_path = r""
+file_path = r""  # full path to .js file to edit
 subject = "Algorithms"  # subject name with underscores if needed
 directory = os.fsencode(dir_path)
 arr_name = subject + '=[\n'
@@ -15,8 +15,8 @@ end_str = '",\n'
 imagesarr = ''
 
 
-def write_to_js(array_name, images):
-    str_to_write = array_name + images + ']'
+def write_to_js(array_name, imagesList):
+    str_to_write = array_name + imagesList + ']'
     f = open(file_path, 'w')
     f.write(str_to_write)
     f.close

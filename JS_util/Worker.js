@@ -13,7 +13,7 @@
   function selectsubject() {
       subject = $("#subject").val()
 
-      if (subject != "-1") {
+      if (subject != "-1") { //select subject array (differs in array sizes...)
           switch (subject) {
               case "Computational_models":
                   questionsArr = Computational_models;

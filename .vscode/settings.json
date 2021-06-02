@@ -1,19 +1,20 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#fc9d25",
-        "activityBar.activeBorder": "#027e47",
-        "activityBar.background": "#fc9d25",
+        "activityBar.activeBackground": "#aeafb1",
+        "activityBar.activeBorder": "#bf406a",
+        "activityBar.background": "#aeafb1",
         "activityBar.foreground": "#15202b",
         "activityBar.inactiveForeground": "#15202b99",
-        "activityBarBadge.background": "#027e47",
+        "activityBarBadge.background": "#bf406a",
         "activityBarBadge.foreground": "#e7e7e7",
-        "statusBar.background": "#eb8403",
+        "statusBar.background": "#949698",
         "statusBar.foreground": "#15202b",
-        "statusBarItem.hoverBackground": "#b96802",
-        "titleBar.activeBackground": "#eb8403",
+        "statusBarItem.hoverBackground": "#7a7c7f",
+        "titleBar.activeBackground": "#949698",
         "titleBar.activeForeground": "#15202b",
-        "titleBar.inactiveBackground": "#eb840399",
+        "titleBar.inactiveBackground": "#94969899",
         "titleBar.inactiveForeground": "#15202b99"
     },
-    "peacock.color": "#EB8403"
+    "peacock.color": "#949698",
+    "python.pythonPath": "C:\\Users\\alws3\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }

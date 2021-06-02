@@ -5,23 +5,33 @@
   var questionsArr;
   var subject;
 
+
   function init() {
-      localStorage.clear();
-      document.getElementById('ph3').innerHTML = count.length + "/" + questionsArr.length;
+      //localStorage.clear();
+      //   arrays = {
+      //       "Algorithms": Algorithms_arr,
+      //       "Computational_models": Computational_models_arr
+
+      //   }
+      createDDL();
+      //document.getElementById('ph3').innerHTML = count.length + "/" + questionsArr.length;
+  }
+
+  function createDDL() {
+      keys = Object.keys(arrays);
+      let str = ' <option value="-1">please select a subject</option>';
+      for (let i = 0; i < keys.length; i++) {
+          str += ' <option value="' + keys[i] + '">' + keys[i] + '</option>';
+
+      }
+      $('#subjectDDL').html(str);
   }
 
   function selectsubject() {
-      subject = $("#subject").val()
+      subject = $("#subjectDDL").val()
 
       if (subject != "-1") { //select subject array (differs in array sizes...)
-          switch (subject) {
-              case "Computational_models":
-                  questionsArr = Computational_models;
-                  break;
-              case "Algorithms":
-                  questionsArr = Algorithms_arr;
-                  break;
-          }
+          questionsArr = arrays[subject];
       }
   }
 
@@ -47,8 +57,8 @@
                   flag = false;
           }
       } while (flag == false);
-
-      str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>";
+      //str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>";
+      str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + "'>";
       document.getElementById('ph').innerHTML = str;
       arr.push(random);
       count++;
@@ -56,7 +66,8 @@
   }
 
   function getAnswer() {
-      str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>";
+      //str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>";
+      str = "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>";
       document.getElementById('ph2').innerHTML = str;
       document.getElementById('btnGetAnswer').style.visibility = "hidden";
   }

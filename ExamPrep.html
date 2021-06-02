@@ -9,6 +9,7 @@
     <script type="text/javascript" src="JS_util/Worker.js"></script>
 
     <!-- Data Sets -->
+    <script type="text/javascript" src="JS_util/data_sets/Arrays.js"></script>
     <script type="text/javascript" src="JS_util/data_sets/Computetianal_Models.js"></script>
     <script type="text/javascript" src="JS_util/data_sets/Algoritms.js"></script>
 
@@ -19,10 +20,11 @@
     <input type="button" id="btngetQuestion" onclick="getQuestion()" style="color:blue;font-size:30px;" value="הגרל שאלה" />
     <input type="button" id="btnGetAnswer" onclick="getAnswer()" style="color:green;font-size:30px;visibility:hidden;" value="הצג פיתרון" />
 
-    <select name="subjectSelectDDL" id="subject" onchange="selectsubject()">
-        <option value="-1">please select a subject</option>
-        <option value="Computational_models">Computational models</option>
-        <option value="Algorithms">Algorithms</option>
+    <select name="subjectSelectDDL" id="subjectDDL" onchange="selectsubject()">
+
+        <!-- <option value="-1">please select a subject</option> -->
+        <!-- <option value="Computational_models">Computational models</option>
+        <option value="Algorithms">Algorithms</option> -->
     </select>
     <div id="ph3" style="color:rosybrown;font-size:20px;">
 

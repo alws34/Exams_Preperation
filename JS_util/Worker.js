@@ -7,12 +7,11 @@
 
 
   function init() {
-      //localStorage.clear();
-      //   arrays = {
-      //       "Algorithms": Algorithms_arr,
-      //       "Computational_models": Computational_models_arr
-
-      //   }
+      localStorage.clear();
+      arrays = {
+          "Algorithms": Algorithms_arr,
+          "Computational_models": Computational_models_arr
+      }
       createDDL();
       //document.getElementById('ph3').innerHTML = count.length + "/" + questionsArr.length;
   }

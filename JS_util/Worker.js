@@ -56,8 +56,8 @@
                   flag = false;
           }
       } while (flag == false);
-      //str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>";
-      str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + "'>";
+      //str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //server
+      str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //local
       document.getElementById('ph').innerHTML = str;
       arr.push(random);
       count++;
@@ -65,8 +65,8 @@
   }
 
   function getAnswer() {
-      //str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>";
-      str = "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>";
+      //str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //server
+      str = "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
       document.getElementById('ph2').innerHTML = str;
       document.getElementById('btnGetAnswer').style.visibility = "hidden";
   }

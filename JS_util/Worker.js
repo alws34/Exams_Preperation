@@ -22,7 +22,6 @@
       let str = ' <option value="-1">please select a subject</option>';
       for (let i = 0; i < keys.length; i++) {
           str += ' <option value="' + keys[i] + '">' + keys[i] + '</option>';
-
       }
       $('#subjectDDL').html(str);
   }

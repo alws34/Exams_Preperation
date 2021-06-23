@@ -5,6 +5,14 @@
   var questionsArr;
   var subject;
 
+  /*
+   *TODO: 
+   * add css/bootstrap
+   * 
+   */
+
+
+
 
   function init() {
       localStorage.clear();
@@ -14,7 +22,6 @@
       }
       $('#btngetQuestion').hide();
       createDDL();
-      //document.getElementById('ph3').innerHTML = count.length + "/" + questionsArr.length;
   }
 
   function createDDL() {
@@ -44,8 +51,8 @@
 
   function getQuestion() {
       str = "";
-      document.getElementById('ph2').innerHTML = "";
-      document.getElementById('btnGetAnswer').style.visibility = "visible";
+      $('#ph2').html("");
+      $('#btnGetAnswer').css("visibility", "visible");
       random;
       if (arr.length == questionsArr.length - 1) {
           arr = [];
@@ -60,20 +67,41 @@
                   flag = false;
           }
       } while (flag == false);
+
       //str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //server
       str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //local
-      document.getElementById('ph').innerHTML = str;
+      $('#ph').html(str);
       arr.push(random);
       count++;
-      document.getElementById('ph3').innerHTML = count + "/" + questionsArr.length;
+      $('#ph3').html(count + "/" + questionsArr.length);
   }
 
   function getAnswer() {
+      /*decide if question is 
+       *from a practice or 
+       *from an assignment
+       */
+
+      //remove file extention for type -> assignment
+      let parts = questionsArr[random].split(".");
+      let filename = parts[0];
+      let type = "Assignment";
+
+      //remove file extension and practice mark ('t')
+      if (filename.includes("t")) {
+          type = "practice";
+          parts = questionsArr[random].split("."); //remove file extention
+          parts = parts[0].split("t");
+          filename = parts[1];
+      }
+
+      str = "<p>" + type + " ==>" + filename + "<== Question </p>";
+
       //str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //server
-      str = "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
-      str += "<p> Assignment-->" + questionsArr[random] + "<--Question </p>"; //TODO: remove file extention
-      document.getElementById('ph2').innerHTML = str;
-      document.getElementById('btnGetAnswer').style.visibility = "hidden";
+      str += "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
+
+      $('#ph2').html(str);
+      $('#btnGetAnswer').css("visibility", "hidden");
   }
 
   //Events

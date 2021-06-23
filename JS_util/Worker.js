@@ -12,6 +12,7 @@
           "Algorithms": Algorithms_arr,
           "Computational_models": Computational_models_arr
       }
+      $('#btngetQuestion').hide();
       createDDL();
       //document.getElementById('ph3').innerHTML = count.length + "/" + questionsArr.length;
   }
@@ -27,9 +28,13 @@
   }
 
   function selectsubject() {
-      subject = $("#subjectDDL").val()
+      subject = $("#subjectDDL").val();
 
-      if (subject != "-1") { //select subject array (differs in array sizes...)
+      if (subject == "-1")
+          $('#btngetQuestion').hide();
+      //if (subject != "-1") {
+      else {
+          $('#btngetQuestion').show();
           questionsArr = arrays[subject];
       }
   }
@@ -67,7 +72,7 @@
   function getAnswer() {
       //str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //server
       str = "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
-      str += "<p> Assignment-->" + questionsArr[random] + "<--Question </p>";
+      str += "<p> Assignment-->" + questionsArr[random] + "<--Question </p>"; //TODO: remove file extention
       document.getElementById('ph2').innerHTML = str;
       document.getElementById('btnGetAnswer').style.visibility = "hidden";
   }

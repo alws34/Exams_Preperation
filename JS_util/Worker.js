@@ -57,7 +57,7 @@
           }
       } while (flag == false);
       //str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //server
-      str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + ".png'>"; //local
+      str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //local
       document.getElementById('ph').innerHTML = str;
       arr.push(random);
       count++;
@@ -66,7 +66,7 @@
 
   function getAnswer() {
       //str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //server
-      str = "<img src='/images/" + subject + "/answers/" + questionsArr[random] + ".png'>"; //local
+      str = "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
       str += "<p> Assignment-->" + questionsArr[random] + "<--Question </p>";
       document.getElementById('ph2').innerHTML = str;
       document.getElementById('btnGetAnswer').style.visibility = "hidden";

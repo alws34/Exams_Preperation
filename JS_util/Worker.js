@@ -11,9 +11,6 @@
    * 
    */
 
-
-
-
   function init() {
       localStorage.clear();
       arrays = {

@@ -65,8 +65,8 @@
           }
       } while (flag == false);
 
-      //str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //server
-      str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //local
+      str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //server
+      //str = "<img src='/images / " + subject + " / questions / " + questionsArr[random] + "'>"; //local
       $('#ph').html(str);
       arr.push(random);
       count++;
@@ -94,8 +94,8 @@
 
       str = "<p>" + type + " ==>" + filename + "<== Question </p>";
 
-      //str = "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //server
-      str += "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
+      str += "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //server
+      //str += "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
 
       $('#ph2').html(str);
       $('#btnGetAnswer').css("visibility", "hidden");

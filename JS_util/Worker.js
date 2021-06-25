@@ -42,8 +42,8 @@
       }
   }
 
-  function GetIndex(min, max) {
-      return Math.floor(Math.random() * (max - min) + min);
+  function GetIndex(len) {
+      return Math.floor(Math.random() * len);
   }
 
   function getQuestion() {
@@ -58,7 +58,7 @@
 
       do {
           flag = true;
-          random = GetIndex(0, questionsArr.length - 1);
+          random = GetIndex(questionsArr.length - 1);
           for (var i = 0; i < arr.length; i++) {
               if (random == arr[i])
                   flag = false;
@@ -66,7 +66,7 @@
       } while (flag == false);
 
       str = "<img src='/Exams_prep/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //server
-      //str = "<img src='/images / " + subject + " / questions / " + questionsArr[random] + "'>"; //local
+      //str = "<img src='/images/" + subject + "/questions/" + questionsArr[random] + "'>"; //local
       $('#ph').html(str);
       arr.push(random);
       count++;

@@ -15,7 +15,8 @@
       localStorage.clear();
       arrays = {
           "Algorithms": Algorithms_arr,
-          "Computational_models": Computational_models_arr
+          "Computational_models": Computational_models_arr,
+          "Data_communication_networks": Data_communication_networks_arr
       }
       $('#btngetQuestion').hide();
       createDDL();
@@ -95,7 +96,7 @@
       str = "<p>" + type + " ==>" + filename + "<== Question </p>";
 
       str += "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //server
-      //str += "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
+      // str += "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
 
       $('#ph2').html(str);
       $('#btnGetAnswer').css("visibility", "hidden");

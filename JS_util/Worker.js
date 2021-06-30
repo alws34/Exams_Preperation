@@ -4,12 +4,7 @@
   var doneQuestions;
   var questionsArr;
   var subject;
-
-  /*
-   *TODO: 
-   * add css/bootstrap
-   * 
-   */
+  indexes = []
 
   function init() {
       localStorage.clear();
@@ -44,8 +39,13 @@
   }
 
   function GetIndex(len) {
-      return Math.floor(Math.random() * len);
+      let index = Math.floor(Math.random() * len); // make sure not to return on the same question
+      if (arr.includes(index))
+          GetIndex(len);
+      else
+          return index;
   }
+
 
   function getQuestion() {
       str = "";
@@ -79,22 +79,26 @@
       let parts = questionsArr[random].split(".");
       let filename = parts[0];
       let type = "Assignment";
-
+      let delim;
       //remove file extension and practice mark ('t')
       if (filename.includes('t') || filename.includes('e')) {
-          if (filename.includes('t'))
+          if (filename.includes('t')) {
               type = "practice";
-          else
+              delim = 't';
+          } else {
               type = "exam";
+              delim = 'e'
+          }
+
           parts = questionsArr[random].split("."); //remove file extention
-          parts = parts[0].split(type);
+          parts = parts[0].split(delim);
           filename = parts[1];
       }
 
       str = "<p>" + type + " ==>" + filename + "<== Question </p>";
 
       str += "<img src='/Exams_prep/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //server
-      // str += "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
+      //str += "<img src='/images/" + subject + "/answers/" + questionsArr[random] + "'>"; //local
 
       $('#ph2').html(str);
       $('#btnGetAnswer').css("visibility", "hidden");

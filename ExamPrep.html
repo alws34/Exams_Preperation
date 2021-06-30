@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <title>Questions Randomizer</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script type="text/javascript" src="JS_util/Worker.js"></script>
     <script type="text/javascript" src="JS_util/data_sets/Arrays.js"></script>
@@ -13,27 +14,41 @@
     <script type="text/javascript" src="JS_util/data_sets/Algorithms.js"></script>
     <script type="text/javascript" src="JS_util/data_sets/Data_communication_networks.js"></script> -->
 
-
+    <style>
+        img {
+            width: 50%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 
 </head>
 
 <body onload="init()">
-    <input type="button" id="btngetQuestion" onclick="getQuestion()" style="color:blue;font-size:30px;" value="הגרל שאלה" />
-    <input type="button" id="btnGetAnswer" onclick="getAnswer()" style="color:green;font-size:30px;visibility:hidden;" value="הצג פיתרון" />
+    <div class="container">
+        <div class="row">
+            <input type="button" id="btngetQuestion" onclick="getQuestion()" class="col-4" style="color:blue;font-size:30px;" value="הגרל שאלה" />
+            <input type="button" id="btnGetAnswer" onclick="getAnswer()" class="col-4" style="color:green;font-size:30px;visibility:hidden;" value="הצג פיתרון" />
+            <select name="subjectSelectDDL" id="subjectDDL" class="col-4" onchange="selectsubject()"></select>
+        </div>
+        <div class="row">
+            <div class="col" id="ph3" style="color:rosybrown;font-size:10px;"></div>
+        </div>
+        <div class="row">
+            <div class="col" id="ph"></div>
+        </div>
 
-    <select name="subjectSelectDDL" id="subjectDDL" onchange="selectsubject()">
-    </select>
-    <div id="ph3" style="color:rosybrown;font-size:20px;">
-
+        <div class="row">
+            <div class="col" id="ph2" style="color:red;font-size:40px;"></div>
+        </div>
     </div>
-    <div id="ph">
-
-    </div>
-
-    <div id="ph2" style="color:red;font-size:40px;">
-
-    </div>
-
 
 </body>
 

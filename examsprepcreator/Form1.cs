@@ -145,8 +145,8 @@ namespace examsprepcreator
         private void textBoxPath_TextChanged(object sender, EventArgs e)//set paths
         {
             string path = textBoxPath.Text;
-            string apath = path + @"\answers";
-            string qpath = path + @"\questions";
+            apath = path + @"\answers";
+            qpath = path + @"\questions";
             setDir(apath);
             setDir(qpath);
         }

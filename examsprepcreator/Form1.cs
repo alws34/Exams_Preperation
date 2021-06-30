@@ -8,12 +8,13 @@ namespace examsprepcreator
 {
     public partial class frmSetImages : Form
     {
-        int ansclicks;
-        int questionsclick;
+        int ansclicks, questionsclick;
+        string apath, qpath;
 
         public frmSetImages()
         {
             InitializeComponent();
+            reset();
         }
         private void saveimg(Image img, int click, string qa_path)
         {
@@ -31,8 +32,9 @@ namespace examsprepcreator
 
                 int num = Int32.Parse(textBoxnumber.Text); // exam/practice/assignment number
                 string filename = type + num + "-" + click + ".png"; //e.g. e1-3.png
-                string path = qa_path + @"\" + filename; //e.g. c:\users\public\desktop + \ + e1-3.png
-                img.Save(path, ImageFormat.Png);
+                string path = qa_path + @"\" + filename; //e.g. c:\users\public\desktop\e1-3.png
+
+                img.Save(path, ImageFormat.Png); // saves the image in png format
             }
             else
             {
@@ -72,13 +74,21 @@ namespace examsprepcreator
                 sw.Write(arr); // write array to file
             }
         }
-
+        private void reset()
+        {
+            ansclicks = 0;
+            questionsclick = 0;
+            lblq_num.Text = "#: ";
+            pictureBoxAnswer.Image = null;
+            pictureBoxQuestion.Image = null;
+        }
+        private void setDir(string path) // create questions and answers directories if not exist
+        {
+            if (!(Directory.Exists(path)))
+                Directory.CreateDirectory(path);
+        }
         private void pictureBoxQuestion_Click(object sender, EventArgs e)//save question
         {
-            string qpath = textBoxPath.Text + @"\questions";
-            if (!(Directory.Exists(qpath)))
-                Directory.CreateDirectory(qpath);
-
             if (Clipboard.ContainsImage() && !(string.IsNullOrEmpty(qpath)))
             {
                 Image q_img = Clipboard.GetImage();
@@ -92,18 +102,9 @@ namespace examsprepcreator
                 MessageBox.Show("please fill questions path");
             }
         }
-        private void reset()
-        {
-            ansclicks = 0;
-            questionsclick = 0;
-        }
+
         private void pictureBoxAnswer_Click(object sender, EventArgs e) // save answer
         {
-            string apath = textBoxPath.Text + @"\answers";
-
-            if (!(Directory.Exists(apath)))
-                Directory.CreateDirectory(apath);
-
             if (Clipboard.ContainsImage() && !(string.IsNullOrEmpty(apath)))
             {
                 Image answerimg = Clipboard.GetImage();
@@ -127,18 +128,27 @@ namespace examsprepcreator
         private void buttonreset_Click(object sender, EventArgs e)
         {
             reset();
-            MessageBox.Show("clicks reset");
+            //MessageBox.Show("clicks reset");
         }
 
-        private void textBoxnumber_TextChanged(object sender, EventArgs e)
+        private void textBoxnumber_TextChanged(object sender, EventArgs e) // if number changed, reset the form
         {
             reset();
             MessageBox.Show("clicks reset");
         }
 
-        private void textBoxnumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBoxnumber_KeyPress(object sender, KeyPressEventArgs e)//checkbox number to accept only numbers
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void textBoxPath_TextChanged(object sender, EventArgs e)//set paths
+        {
+            string path = textBoxPath.Text;
+            string apath = path + @"\answers";
+            string qpath = path + @"\questions";
+            setDir(apath);
+            setDir(qpath);
         }
     }
 }

@@ -144,6 +144,7 @@ namespace examsprepcreator
             this.textBoxPath.Name = "textBoxPath";
             this.textBoxPath.Size = new System.Drawing.Size(433, 22);
             this.textBoxPath.TabIndex = 11;
+            this.textBoxPath.TextChanged += new System.EventHandler(this.textBoxPath_TextChanged);
             // 
             // label5
             // 

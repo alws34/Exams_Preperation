@@ -75,21 +75,19 @@
   }
 
   function getAnswer() {
-      /*decide if question is 
-       *from a practice or 
-       *from an assignment
-       */
-
       //remove file extention for type -> assignment
       let parts = questionsArr[random].split(".");
       let filename = parts[0];
       let type = "Assignment";
 
       //remove file extension and practice mark ('t')
-      if (filename.includes("t")) {
-          type = "practice";
+      if (filename.includes('t') || filename.includes('e')) {
+          if (filename.includes('t'))
+              type = "practice";
+          else
+              type = "exam";
           parts = questionsArr[random].split("."); //remove file extention
-          parts = parts[0].split("t");
+          parts = parts[0].split(type);
           filename = parts[1];
       }
 

@@ -97,7 +97,7 @@ namespace examsprepcreator
             this.textBoxnumber.Size = new System.Drawing.Size(100, 22);
             this.textBoxnumber.TabIndex = 4;
             this.textBoxnumber.TextChanged += new System.EventHandler(this.textBoxnumber_TextChanged);
-            this.textBoxnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnumber_KeyPress_1);
+            this.textBoxnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxnumber_KeyPress);
             // 
             // label3
             // 

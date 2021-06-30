@@ -136,7 +136,7 @@ namespace examsprepcreator
             MessageBox.Show("clicks reset");
         }
 
-        private void textBoxnumber_KeyPress_1(object sender, KeyPressEventArgs e)
+        private void textBoxnumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }

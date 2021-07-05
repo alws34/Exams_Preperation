@@ -134,7 +134,7 @@ namespace examsprepcreator
         private void textBoxnumber_TextChanged(object sender, EventArgs e) // if number changed, reset the form
         {
             reset();
-            MessageBox.Show("clicks reset");
+            //MessageBox.Show("clicks reset");
         }
 
         private void textBoxnumber_KeyPress(object sender, KeyPressEventArgs e)//checkbox number to accept only numbers

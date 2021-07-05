@@ -31,10 +31,10 @@
 
       if (subject == "-1")
           $('#btngetQuestion').hide();
-      //if (subject != "-1") {
       else {
           $('#btngetQuestion').show();
           questionsArr = arrays[subject];
+          count = 0;
       }
   }
 

@@ -52,7 +52,7 @@ namespace examsprepcreator
             // 
             // pictureBoxAnswer
             // 
-            this.pictureBoxAnswer.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pictureBoxAnswer.BackColor = System.Drawing.Color.DarkSlateGray;
             this.pictureBoxAnswer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxAnswer.Location = new System.Drawing.Point(445, 39);
             this.pictureBoxAnswer.Name = "pictureBoxAnswer";
@@ -63,7 +63,7 @@ namespace examsprepcreator
             // 
             // pictureBoxQuestion
             // 
-            this.pictureBoxQuestion.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pictureBoxQuestion.BackColor = System.Drawing.Color.DarkSlateGray;
             this.pictureBoxQuestion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxQuestion.Location = new System.Drawing.Point(12, 39);
             this.pictureBoxQuestion.Name = "pictureBoxQuestion";
@@ -213,6 +213,7 @@ namespace examsprepcreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.GhostWhite;
             this.ClientSize = new System.Drawing.Size(780, 551);
             this.Controls.Add(this.lblq_num);
             this.Controls.Add(this.lbla_num);
@@ -231,6 +232,8 @@ namespace examsprepcreator
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBoxQuestion);
             this.Controls.Add(this.pictureBoxAnswer);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmSetImages";
             this.Text = "imaginizer";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAnswer)).EndInit();

@@ -201,7 +201,7 @@ namespace examsprepcreator
             // 
             // buttoncreateJS
             // 
-            this.buttoncreateJS.BackColor = System.Drawing.Color.Goldenrod;
+            this.buttoncreateJS.BackColor = System.Drawing.Color.DarkTurquoise;
             this.buttoncreateJS.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttoncreateJS.Location = new System.Drawing.Point(451, 406);
             this.buttoncreateJS.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);

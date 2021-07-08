@@ -11,7 +11,9 @@
       arrays = {
           "Algorithms": Algorithms_arr,
           "Computational_models": Computational_models_arr,
-          "Data_communication_networks": Data_communication_networks_arr
+          "Data_communication_networks": Data_communication_networks_arr,
+          "Statistics": statistical_conclusion_arr,
+          "Computer_Architecture": intro_to_computer_architecture_arr
       }
       $('#btngetQuestion').hide();
       createDDL();

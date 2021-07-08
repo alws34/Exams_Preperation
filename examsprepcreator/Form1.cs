@@ -9,14 +9,14 @@ namespace examsprepcreator
     public partial class frmSetImages : Form
     {
         int ansclicks, questionsclick;
-        string apath, qpath;
+        string apath, qpath, latest_question, latest_answer;
 
-        public frmSetImages()
+        public frmSetImages()//constructor
         {
             InitializeComponent();
             reset();
         }
-        private void saveimg(Image img, int click, string qa_path)
+        private string saveimg(Image img, int click, string qa_path)//save the images (generic save method)
         {
             if (
                 !(string.IsNullOrEmpty(textBoxnumber.Text)) &&
@@ -35,15 +35,34 @@ namespace examsprepcreator
                 string path = qa_path + @"\" + filename; //e.g. c:\users\public\desktop\e1-3.png
 
                 img.Save(path, ImageFormat.Png); // saves the image in png format
+
+                return path; // return image path to make file deletion and modification possible
             }
             else
             {
-                MessageBox.Show("please fill and select all fields");
+               showmessage("please fill and select all fields");
+                return null;
             }
         }
 
-        //write JS array
-        private void appendtoJS(string path)
+        private void deletefile(string path)//delete file
+        {
+            if (File.Exists(path))
+                File.Delete(path);
+            else
+                showmessage("file does not exist! (can delete only 1 file back");
+        }
+
+        private void correctfile(int clicks, string path, Label lbl)//correct the latest file
+        {
+            if (path != null)
+            {
+                lbl.Text = "#: " + clicks.ToString();
+                deletefile(path);
+            }
+        }
+
+        private void appendtoJS(string path)//write JS array
         {
             string dir = textBoxPath.Text; //will get questions or answers path
             string jsfilepath = dir + @"\js_arr.js";
@@ -74,7 +93,8 @@ namespace examsprepcreator
                 sw.Write(arr); // write array to file
             }
         }
-        private void reset()
+
+        private void reset()//partial reset and initialization
         {
             ansclicks = 0;
             questionsclick = 0;
@@ -82,12 +102,33 @@ namespace examsprepcreator
             pictureBoxAnswer.Image = null;
             pictureBoxQuestion.Image = null;
         }
+
+        private void resetbtn()//reset entire form
+        {
+            reset();
+            textBoxPath.Text = null;
+            textBoxnumber.Text = null;
+            textBoxSubjectname.Text = null;
+            checkBoxassignment.Checked = false;
+            checkBoxexam.Checked = false;
+            checkBoxpractice.Checked = false;
+        }
+
         private void setDir(string path) // create questions and answers directories if not exist
         {
             if (!(Directory.Exists(path)))
                 Directory.CreateDirectory(path);
         }
-        private void pictureBoxQuestion_Click(object sender, EventArgs e)//save question
+
+        private void showmessage(string message)//display simple message box
+        {
+            MessageBox.Show(message);
+        }
+
+        /*
+         * EVENTS
+         */
+        private void pictureBoxQuestion_Click(object sender, EventArgs e)//save question image
         {
             if (Clipboard.ContainsImage() && !(string.IsNullOrEmpty(qpath)))
             {
@@ -95,15 +136,15 @@ namespace examsprepcreator
                 pictureBoxQuestion.Image = q_img;
                 questionsclick++;
                 lblq_num.Text = "#: " + questionsclick.ToString();
-                saveimg(q_img, questionsclick, qpath);
+                latest_question = saveimg(q_img, questionsclick, qpath);
             }
             else
             {
-                MessageBox.Show("please fill questions path");
+                showmessage("please fill questions path");
             }
         }
 
-        private void pictureBoxAnswer_Click(object sender, EventArgs e) // save answer
+        private void pictureBoxAnswer_Click(object sender, EventArgs e) // save answer image
         {
             if (Clipboard.ContainsImage() && !(string.IsNullOrEmpty(apath)))
             {
@@ -111,23 +152,23 @@ namespace examsprepcreator
                 pictureBoxAnswer.Image = answerimg;
                 ansclicks++;
                 lbla_num.Text = "#: " + ansclicks.ToString();
-                saveimg(answerimg, ansclicks, apath);
+                latest_answer = saveimg(answerimg, ansclicks, apath);
             }
             else
             {
-                MessageBox.Show("please fill answers path");
+                showmessage("please fill answers path");
             }
         }
 
-        private void buttoncreateJS_Click(object sender, EventArgs e)
+        private void buttoncreateJS_Click(object sender, EventArgs e)//create JS array event
         {
             string path = textBoxPath.Text + @"\questions";
             appendtoJS(path);
         }
 
-        private void buttonreset_Click(object sender, EventArgs e)
+        private void buttonreset_Click(object sender, EventArgs e)//reset form
         {
-            reset();
+            resetbtn();
             //MessageBox.Show("clicks reset");
         }
 
@@ -135,6 +176,28 @@ namespace examsprepcreator
         {
             reset();
             //MessageBox.Show("clicks reset");
+        }
+
+        private void btnAnsCorrect_Click(object sender, EventArgs e)//correct last answer
+        {
+            if (ansclicks != 0)
+            {
+                ansclicks--;
+                correctfile(ansclicks, latest_answer, lbla_num);
+            }
+            else
+                showmessage("clicks already at 0");
+        }
+
+        private void btnQuestionCorrect_Click(object sender, EventArgs e)//correct last question
+        {
+            if (questionsclick != 0)
+            {
+                questionsclick--;
+                correctfile(questionsclick, latest_question, lblq_num);
+            }
+            else
+                showmessage("clicks already at 0");
         }
 
         private void textBoxnumber_KeyPress(object sender, KeyPressEventArgs e)//checkbox number to accept only numbers

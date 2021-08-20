@@ -41,8 +41,10 @@
   }
 
   function GetIndex(len) {
-      let index = Math.floor(Math.random() * len); // make sure not to return on the same question
-      if (arr.includes(index))
+      let index = Math.floor(Math.random() * len);
+      //Math.random() % (MAX - MIN + 1) + MIN
+
+      if (arr.includes(index) || typeof index == 'undefined' || index == null) // make sure not to return on the same question or 'undefine' or null index
           GetIndex(len);
       else
           return index;

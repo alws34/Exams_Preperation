@@ -8,7 +8,7 @@ namespace examsprepcreator
 {
     public partial class frmSetImages : Form
     {
-        int ansclicks, questionsclick;
+        int ansclicks, questionsclick, lastX, lastY;
         string apath, qpath, latest_question, latest_answer;
 
         public frmSetImages()//constructor
@@ -40,7 +40,7 @@ namespace examsprepcreator
             }
             else
             {
-               showmessage("please fill and select all fields");
+                showmessage("please fill and select all fields");
                 return null;
             }
         }
@@ -109,6 +109,7 @@ namespace examsprepcreator
             textBoxPath.Text = null;
             textBoxnumber.Text = null;
             textBoxSubjectname.Text = null;
+            textBoxCountFrom.Text = null;
             checkBoxassignment.Checked = false;
             checkBoxexam.Checked = false;
             checkBoxpractice.Checked = false;
@@ -123,6 +124,11 @@ namespace examsprepcreator
         private void showmessage(string message)//display simple message box
         {
             MessageBox.Show(message);
+        }
+
+        private void setTooltip(TextBox c, string txt)//set textboxes tooltip text
+        {
+            toolTip1.SetToolTip(c, txt);
         }
 
         /*
@@ -176,6 +182,47 @@ namespace examsprepcreator
         {
             reset();
             //MessageBox.Show("clicks reset");
+        }
+
+        private void textBoxCountFrom_TextChanged(object sender, EventArgs e) // if you want to add qestions to an existing data set in the future, you can set the clicks as wished for better indexing
+        {
+            string str;
+            if (!String.IsNullOrEmpty(textBoxCountFrom.Text) && !String.IsNullOrWhiteSpace(textBoxCountFrom.Text))
+            {
+                str = textBoxCountFrom.Text;
+                try
+                {
+                    int clicks = Int32.Parse(str);
+                    clicks--;
+                    ansclicks = clicks;
+                    questionsclick = clicks;
+                }
+                catch (ArgumentNullException)
+                {
+                    //code should not get here
+                }
+                catch (FormatException)
+                {
+                    showmessage("please enter only numbers"); //code should not get here
+                }
+                catch (OverflowException ofe)
+                {
+                    showmessage(ofe.ToString());
+                }
+            }
+        }
+
+        private void textBoxCountFrom_MouseMove(object sender, MouseEventArgs e)//mouse move event for tooltip over "CountFrom" textbox
+        {
+            if (e.X != this.lastX || e.Y != this.lastY)
+            {
+                TextBox c = (TextBox)sender;
+                toolTip1.IsBalloon = true;
+                setTooltip(c, "please look in the folder to see which index should come next");
+                //leave the tooltip in place
+                this.lastX = e.X;
+                this.lastY = e.Y;
+            }
         }
 
         private void btnAnsCorrect_Click(object sender, EventArgs e)//correct last answer

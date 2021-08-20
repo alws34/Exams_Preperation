@@ -1,20 +1,20 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#f3a668",
-        "activityBar.activeBorder": "#09763a",
-        "activityBar.background": "#f3a668",
-        "activityBar.foreground": "#15202b",
-        "activityBar.inactiveForeground": "#15202b99",
-        "activityBarBadge.background": "#09763a",
+        "activityBar.activeBackground": "#0098ff",
+        "activityBar.activeBorder": "#bf0072",
+        "activityBar.background": "#0098ff",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#bf0072",
         "activityBarBadge.foreground": "#e7e7e7",
-        "statusBar.background": "#ef8a39",
-        "statusBar.foreground": "#15202b",
-        "statusBarItem.hoverBackground": "#e36f12",
-        "titleBar.activeBackground": "#ef8a39",
-        "titleBar.activeForeground": "#15202b",
-        "titleBar.inactiveBackground": "#ef8a3999",
-        "titleBar.inactiveForeground": "#15202b99"
+        "statusBar.background": "#007acc",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#0098ff",
+        "titleBar.activeBackground": "#007acc",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#007acc99",
+        "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#EF8A39",
+    "peacock.color": "#007ACC",
     "python.pythonPath": "C:\\Users\\alws3\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }
